@@ -12,42 +12,166 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Archivo:ital,wght@1,400&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; padding: 0; background: #0A1626; }
+    html, body { margin: 0; padding: 0; background: #0A1626; overflow-x: hidden; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     a { color: #CE1B2C; }
     a:hover { color: #E23140; }
+    img { max-width: 100%; }
+
+    /* ===== Mobile-Navigation: Burger + Drawer ===== */
+    .dc-burger {
+      display: none;
+      width: 48px; height: 48px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      background: transparent; border: 0; padding: 0; margin: 0;
+      cursor: pointer; -webkit-tap-highlight-color: transparent;
+    }
+    .dc-burger span {
+      display: block; width: 26px; height: 2px; border-radius: 2px;
+      background: currentColor;
+      transition: transform .34s cubic-bezier(.16,1,.3,1), opacity .2s ease;
+    }
+    .dc-burger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .dc-burger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(.3); }
+    .dc-burger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .dc-backdrop {
+      position: fixed; inset: 0; z-index: 40;
+      background: rgba(8,16,30,.5);
+      -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+      opacity: 0; visibility: hidden;
+      transition: opacity .4s ease, visibility .4s ease;
+    }
+    .dc-backdrop.is-open { opacity: 1; visibility: visible; }
+
+    .dc-drawer {
+      position: fixed; top: 0; right: 0; z-index: 55;
+      height: 100%; width: min(86vw, 380px);
+      background: #0C1D33; color: #F5F8FC;
+      padding: 92px 28px 32px;
+      display: flex; flex-direction: column;
+      transform: translateX(102%);
+      transition: transform .46s cubic-bezier(.16,1,.3,1);
+      box-shadow: -24px 0 60px rgba(0,0,0,.4);
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+    }
+    .dc-drawer.is-open { transform: translateX(0); }
+    .dc-drawer nav { display: flex; flex-direction: column; }
+    .dc-drawer nav a {
+      color: #F5F8FC; text-decoration: none;
+      font-size: 21px; font-weight: 600; letter-spacing: -.01em;
+      padding: 16px 4px; border-bottom: 1px solid rgba(240,244,250,.14);
+    }
+    .dc-drawer nav a:active { color: #EE8A92; }
+    .dc-drawer-foot { margin-top: auto; padding-top: 26px; display: flex; flex-direction: column; gap: 12px; }
+    .dc-drawer-call {
+      background: #CE1B2C; color: #fff; text-decoration: none; text-align: center;
+      font-size: 16px; font-weight: 650; padding: 16px; border-radius: 999px;
+    }
+    .dc-drawer-call:hover { color: #fff; }
+    .dc-drawer-ig {
+      border: 1px solid rgba(240,244,250,.32); color: #F5F8FC; text-decoration: none;
+      text-align: center; font-size: 15px; font-weight: 600; padding: 15px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .dc-drawer-ig:hover { color: #F5F8FC; }
+
+    @media (max-width: 820px) {
+      .dc-desktop-nav { display: none !important; }
+      .dc-burger { display: inline-flex !important; }
+      .dc-header-inner { height: 64px !important; padding-left: 20px !important; padding-right: 20px !important; }
+    }
+    @media (min-width: 821px) {
+      .dc-drawer, .dc-backdrop { display: none !important; }
+    }
+
+    /* ===== Hero ===== */
+    @media (max-width: 820px) {
+      .dc-hero-inner { padding-top: 108px !important; padding-left: 20px !important; padding-right: 20px !important; }
+      .dc-hero-facts-wrap { padding-left: 20px !important; padding-right: 20px !important; margin-top: 40px !important; }
+    }
+    @media (max-width: 600px) {
+      .dc-hero-section { min-height: 86vh !important; }
+      .dc-hero-bg { background-position: center 28% !important; }
+      .dc-hero-eyebrow { font-size: 12px !important; letter-spacing: .16em !important; }
+      .dc-hero-h1 { font-size: clamp(30px, 8.6vw, 44px) !important; line-height: 1.07 !important; }
+      .dc-hero-sub { font-size: 16px !important; margin-top: 20px !important; line-height: 1.55 !important; }
+      .dc-hero-cta { margin-top: 26px !important; }
+      .dc-facts { grid-template-columns: 1fr 1fr !important; }
+      .dc-facts > div { padding: 16px 18px !important; }
+      .dc-facts p:first-child { font-size: 19px !important; }
+    }
+    @media (max-width: 380px) {
+      .dc-facts { grid-template-columns: 1fr !important; }
+      .dc-hero-cta a { flex: 1 1 100% !important; justify-content: center !important; }
+    }
+
+    /* ===== Abschnitts-Rhythmus ===== */
+    @media (max-width: 600px) {
+      .dc-sec { padding-top: 64px !important; padding-bottom: 64px !important; }
+      .dc-pad { padding-left: 20px !important; padding-right: 20px !important; }
+      .dc-intro { grid-template-columns: 1fr !important; gap: 22px !important; padding-left: 20px !important; padding-right: 20px !important; }
+      .dc-h2 { font-size: clamp(26px, 6.6vw, 34px) !important; }
+      .dc-kontakt-detail { border-left: 0 !important; padding-left: 0 !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .dc-drawer, .dc-backdrop, .dc-burger span { transition-duration: .001ms !important; }
+    }
   </style>
 </helmet>
 
 <div style="font-family: 'Archivo', Helvetica, sans-serif; background: #F5F8FC; color: #10243F; min-width: 320px;">
 
   <!-- ===== NAV ===== -->
-  <header data-screen-label="Navigation" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: {{ headerBg }}; backdrop-filter: {{ headerBlur }}; border-bottom: 1px solid {{ headerBorder }}; transition: background 0.35s ease, border-color 0.35s ease;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px; height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+  <header data-screen-label="Navigation" style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; background: {{ headerBg }}; backdrop-filter: {{ headerBlur }}; border-bottom: 1px solid {{ headerBorder }}; transition: background 0.35s ease, border-color 0.35s ease;">
+    <div class="dc-header-inner" style="max-width: 1240px; margin: 0 auto; padding: 0 32px; height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
       <a href="#top" style="text-decoration: none; display: flex; align-items: baseline; gap: 10px; color: {{ logoColor }}; transition: color 0.35s ease;">
         <span style="font-size: 26px; font-weight: 800; letter-spacing: 0.02em; font-stretch: 115%;">LUAN</span>
         <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7;">Haustechnik</span>
       </a>
-      <nav style="display: flex; align-items: center; gap: 28px;">
+      <nav class="dc-desktop-nav" style="display: flex; align-items: center; gap: 28px;">
         <a href="#leistungen" style="text-decoration: none; color: {{ navColor }}; font-size: 15px; font-weight: 500; transition: color 0.35s ease;" style-hover="opacity: 0.7;">Leistungen</a>
         <a href="#einblicke" style="text-decoration: none; color: {{ navColor }}; font-size: 15px; font-weight: 500; transition: color 0.35s ease;" style-hover="opacity: 0.7;">Einblicke</a>
         <a href="#unternehmen" style="text-decoration: none; color: {{ navColor }}; font-size: 15px; font-weight: 500; transition: color 0.35s ease;" style-hover="opacity: 0.7;">Unternehmen</a>
         <a href="#kontakt" style="text-decoration: none; background: {{ ctaBg }}; border: 1px solid {{ ctaBorder }}; color: {{ ctaColor }}; font-size: 15px; font-weight: 600; padding: 10px 22px; border-radius: 999px; transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;" style-hover="background: #CE1B2C; border-color: #CE1B2C; color: #FFF;">Kontakt</a>
       </nav>
+      <button class="{{ burgerClass }}" type="button" aria-label="Menü öffnen und schließen" aria-expanded="{{ menuExpanded }}" onClick="{{ toggleMenu }}" style="color: {{ burgerColor }}; transition: color 0.35s ease;">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
+  <!-- ===== MOBILE DRAWER ===== -->
+  <div class="{{ backdropClass }}" onClick="{{ closeMenu }}" aria-hidden="true"></div>
+  <aside class="{{ drawerClass }}">
+    <nav>
+      <a href="#leistungen" onClick="{{ navClose }}">Leistungen</a>
+      <a href="#einblicke" onClick="{{ navClose }}">Einblicke</a>
+      <a href="#unternehmen" onClick="{{ navClose }}">Unternehmen</a>
+      <a href="#kontakt" onClick="{{ navClose }}">Kontakt</a>
+    </nav>
+    <div class="dc-drawer-foot">
+      <a href="tel:+491784426480" class="dc-drawer-call" onClick="{{ closeMenu }}">0178 442 64 80 anrufen</a>
+      <a href="https://www.instagram.com/luanbau_nrw/" target="_blank" rel="noopener" class="dc-drawer-ig">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"></circle></svg>
+        @luanbau_nrw
+      </a>
+    </div>
+  </aside>
+
   <!-- ===== HERO ===== -->
-  <section id="top" data-screen-label="Hero" style="position: relative; min-height: 92vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: #0A1626;">
-    <div role="img" aria-label="Hausfassade" style="position: absolute; inset: 0; background-image: {{ heroBgImage }}; background-size: cover; background-position: center;"></div>
+  <section id="top" data-screen-label="Hero" class="dc-hero-section" style="position: relative; min-height: 92vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: #0A1626;">
+    <div role="img" aria-label="Hausfassade" class="dc-hero-bg" style="position: absolute; inset: 0; background-image: {{ heroBgImage }}; background-size: cover; background-position: center;"></div>
     <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,38,0.94) 0%, rgba(10,22,38,0.5) 45%, rgba(10,22,38,0.3) 100%);"></div>
 
-    <div style="position: relative; max-width: 1240px; width: 100%; margin: 0 auto; padding: 150px 32px 0;">
-      <p style="margin: 0 0 18px; color: #EE8A92; font-size: 14px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Innenausbau &amp; Renovierung · Nordrhein-Westfalen</p>
-      <h1 style="margin: 0; color: #FFFFFF; font-size: clamp(44px, 6.5vw, 84px); line-height: 1.03; font-weight: 750; letter-spacing: -0.025em; font-stretch: 105%; max-width: 16ch; text-wrap: balance;">Ihr Zuhause, sauber renoviert — von Handwerkern, die anpacken.</h1>
-      <p style="margin: 26px 0 0; color: rgba(255,255,255,0.85); font-size: 19px; line-height: 1.6; max-width: 56ch; text-wrap: pretty;">Luan ist ein kleines Familienteam für Innenausbau, Renovierung und Sanierung. Vom Trockenbau über den Boden bis zum fertigen Bad — alles aus einer Hand, termintreu und ohne Chaos auf der Baustelle.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px;">
+    <div class="dc-hero-inner" style="position: relative; max-width: 1240px; width: 100%; margin: 0 auto; padding: 150px 32px 0;">
+      <p class="dc-hero-eyebrow" style="margin: 0 0 18px; color: #EE8A92; font-size: 14px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Innenausbau &amp; Renovierung · Nordrhein-Westfalen</p>
+      <h1 class="dc-hero-h1" style="margin: 0; color: #FFFFFF; font-size: clamp(44px, 6.5vw, 84px); line-height: 1.03; font-weight: 750; letter-spacing: -0.025em; font-stretch: 105%; max-width: 16ch; text-wrap: balance;">Ihr Zuhause, sauber renoviert — von Handwerkern, die anpacken.</h1>
+      <p class="dc-hero-sub" style="margin: 26px 0 0; color: rgba(255,255,255,0.85); font-size: 19px; line-height: 1.6; max-width: 56ch; text-wrap: pretty;">Luan ist ein kleines Familienteam für Innenausbau, Renovierung und Sanierung. Vom Trockenbau über den Boden bis zum fertigen Bad — alles aus einer Hand, termintreu und ohne Chaos auf der Baustelle.</p>
+      <div class="dc-hero-cta" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px;">
         <a href="#kontakt" style="text-decoration: none; background: #CE1B2C; color: #FFF; font-size: 16px; font-weight: 650; padding: 16px 30px; border-radius: 999px;" style-hover="background: #E23140;">Jetzt anfragen</a>
         <a href="https://www.instagram.com/luanbau_nrw/" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); color: #FFF; font-size: 16px; font-weight: 600; padding: 16px 26px; border-radius: 999px;" style-hover="background: rgba(255,255,255,0.22);">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.6" cy="6.4" r="1.1" fill="#fff" stroke="none"></circle></svg>
@@ -57,8 +181,8 @@
     </div>
 
     <!-- Hero-Inhalt: Fakten-Leiste -->
-    <div style="position: relative; max-width: 1240px; width: 100%; margin: 56px auto 0; padding: 0 32px 40px;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; overflow: hidden;">
+    <div class="dc-hero-facts-wrap" style="position: relative; max-width: 1240px; width: 100%; margin: 56px auto 0; padding: 0 32px 40px;">
+      <div class="dc-facts" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; overflow: hidden;">
         <div style="background: rgba(10,22,38,0.55); backdrop-filter: blur(8px); padding: 22px 26px;">
           <p style="margin: 0; color: #FFF; font-size: 26px; font-weight: 750; letter-spacing: -0.01em;">4-Mann-Team</p>
           <p style="margin: 4px 0 0; color: rgba(255,255,255,0.65); font-size: 14px;">Persönlich, klein &amp; zuverlässig</p>
@@ -80,8 +204,8 @@
   </section>
 
   <!-- ===== INTRO ===== -->
-  <section id="unternehmen" data-screen-label="Unternehmen" style="max-width: 1240px; margin: 0 auto; padding: 110px 32px 90px; display: grid; grid-template-columns: minmax(240px, 5fr) minmax(300px, 7fr); gap: 64px; align-items: start;">
-    <h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.12; font-weight: 720; letter-spacing: -0.02em; text-wrap: balance;">Handwerk aus einer Hand — für Ihr Zuhause.</h2>
+  <section id="unternehmen" data-screen-label="Unternehmen" class="dc-sec dc-intro" style="max-width: 1240px; margin: 0 auto; padding: 110px 32px 90px; display: grid; grid-template-columns: minmax(240px, 5fr) minmax(300px, 7fr); gap: 64px; align-items: start;">
+    <h2 class="dc-h2" style="margin: 0; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.12; font-weight: 720; letter-spacing: -0.02em; text-wrap: balance;">Handwerk aus einer Hand — für Ihr Zuhause.</h2>
     <div>
       <p style="margin: 0; font-size: 18px; line-height: 1.7; color: #39485C; text-wrap: pretty;">Wir sind ein kleines, eingespieltes Team. Statt anonymer Großbaustelle bekommen Sie bei uns feste Ansprechpartner, die selbst mit anpacken — vom ersten Termin bis zur Übergabe.</p>
       <p style="margin: 18px 0 0; font-size: 18px; line-height: 1.7; color: #39485C; text-wrap: pretty;">Saubere Arbeit, ehrliche Absprachen und ein Ergebnis, das hält: Darauf legen wir Wert. Genau deshalb kommen viele unserer Kundinnen und Kunden über Empfehlung zu uns.</p>
@@ -90,9 +214,9 @@
 
   <!-- ===== LEISTUNGEN ===== -->
   <section id="leistungen" data-screen-label="Leistungen" style="background: #10243F; color: #F5F8FC;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 100px 32px;">
+    <div class="dc-sec dc-pad" style="max-width: 1240px; margin: 0 auto; padding: 100px 32px;">
       <p style="margin: 0 0 14px; color: #EE8A92; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Unsere Leistungen</p>
-      <h2 style="margin: 0 0 56px; font-size: clamp(30px, 3.4vw, 44px); font-weight: 720; letter-spacing: -0.02em; max-width: 22ch; line-height: 1.12; text-wrap: balance;">Vom Rohbau-Detail bis zur fertigen Wohnung.</h2>
+      <h2 class="dc-h2" style="margin: 0 0 56px; font-size: clamp(30px, 3.4vw, 44px); font-weight: 720; letter-spacing: -0.02em; max-width: 22ch; line-height: 1.12; text-wrap: balance;">Vom Rohbau-Detail bis zur fertigen Wohnung.</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px;">
         <div style="border-top: 1px solid rgba(240,244,250,0.25); padding-top: 28px;">
           <p style="margin: 0 0 12px; font-size: 15px; color: #EE8A92; font-weight: 650;">01</p>
@@ -119,7 +243,7 @@
   </section>
 
   <!-- ===== EINBLICKE (Galerie) ===== -->
-  <section id="einblicke" data-screen-label="Einblicke" style="max-width: 1240px; margin: 0 auto; padding: 110px 32px;">
+  <section id="einblicke" data-screen-label="Einblicke" class="dc-sec dc-pad" style="max-width: 1240px; margin: 0 auto; padding: 110px 32px;">
     <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 48px;">
       <div>
         <p style="margin: 0 0 14px; color: #CE1B2C; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Einblicke</p>
@@ -146,7 +270,7 @@
 
   <!-- ===== SOCIAL ===== -->
   <section id="social" data-screen-label="Social" style="background: #0C1D33;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 100px 32px;">
+    <div class="dc-sec dc-pad" style="max-width: 1240px; margin: 0 auto; padding: 100px 32px;">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center;">
         <div>
           <p style="margin: 0 0 14px; color: #EE8A92; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Folgen Sie uns</p>
@@ -176,7 +300,7 @@
 
   <!-- ===== CTA / KONTAKT ===== -->
   <section id="kontakt" data-screen-label="Kontakt" style="background: #10243F; color: #F5F8FC;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 100px 32px 80px;">
+    <div class="dc-sec dc-pad" style="max-width: 1240px; margin: 0 auto; padding: 100px 32px 80px;">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: start;">
         <div>
           <h2 style="margin: 0 0 20px; font-size: clamp(32px, 4vw, 54px); font-weight: 750; letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance;">Lassen Sie uns über Ihr Projekt sprechen.</h2>
@@ -186,7 +310,7 @@
             <a href="https://www.instagram.com/luanbau_nrw/" target="_blank" rel="noopener" style="text-decoration: none; border: 1px solid rgba(240,244,250,0.35); color: #F5F8FC; font-size: 16px; font-weight: 600; padding: 16px 30px; border-radius: 999px;" style-hover="background: rgba(240,244,250,0.1);">Nachricht auf Instagram</a>
           </div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 24px; border-left: 1px solid rgba(240,244,250,0.2); padding-left: 40px;">
+        <div class="dc-kontakt-detail" style="display: flex; flex-direction: column; gap: 24px; border-left: 1px solid rgba(240,244,250,0.2); padding-left: 40px;">
           <div>
             <p style="margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #EE8A92;">Ansprechpartner</p>
             <p style="margin: 0; font-size: 17px; line-height: 1.6;">Edmond Haxhiu<br>Luan Haustechnik</p>
@@ -220,7 +344,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;heroImage&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&amp;fit=crop&amp;w=2400&amp;q=80&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Hero&quot;}}">
 class Component extends DCLogic {
-  state = { scrolled: false };
+  state = { scrolled: false, menuOpen: false };
 
   componentDidMount() {
     const update = (scrolled) => {
@@ -234,6 +358,11 @@ class Component extends DCLogic {
     document.addEventListener("scroll", this._onScroll, { passive: true, capture: true });
     this._onScroll();
 
+    this._onKey = (e) => { if (e.key === "Escape" && this.state.menuOpen) this.setState({ menuOpen: false }); };
+    this._onResize = () => { if (window.innerWidth > 820 && this.state.menuOpen) this.setState({ menuOpen: false }); };
+    window.addEventListener("keydown", this._onKey);
+    window.addEventListener("resize", this._onResize, { passive: true });
+
     const attach = () => {
       const hero = document.getElementById("top");
       if (!hero) { setTimeout(attach, 200); return; }
@@ -246,14 +375,22 @@ class Component extends DCLogic {
     attach();
   }
 
+  componentDidUpdate() {
+    document.body.style.overflow = this.state.menuOpen ? "hidden" : "";
+  }
+
   componentWillUnmount() {
     if (this._io) this._io.disconnect();
     window.removeEventListener("scroll", this._onScroll);
     document.removeEventListener("scroll", this._onScroll, { capture: true });
+    window.removeEventListener("keydown", this._onKey);
+    window.removeEventListener("resize", this._onResize);
+    document.body.style.overflow = "";
   }
 
   renderVals() {
     const s = this.state.scrolled;
+    const menuOpen = this.state.menuOpen;
     const heroImage = this.props.heroImage ?? "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=2400&q=80";
     return {
       heroImage,
@@ -265,7 +402,28 @@ class Component extends DCLogic {
       navColor: s ? "#47566B" : "rgba(255,255,255,0.9)",
       ctaBg: s ? "#10243F" : "rgba(255,255,255,0.12)",
       ctaBorder: s ? "#10243F" : "rgba(255,255,255,0.4)",
-      ctaColor: s ? "#F5F8FC" : "#FFFFFF"
+      ctaColor: s ? "#F5F8FC" : "#FFFFFF",
+      menuOpen,
+      menuExpanded: menuOpen ? "true" : "false",
+      burgerColor: menuOpen ? "#F5F8FC" : (s ? "#10243F" : "#FFFFFF"),
+      burgerClass: menuOpen ? "dc-burger is-open" : "dc-burger",
+      drawerClass: menuOpen ? "dc-drawer is-open" : "dc-drawer",
+      backdropClass: menuOpen ? "dc-backdrop is-open" : "dc-backdrop",
+      toggleMenu: () => this.setState((st) => ({ menuOpen: !st.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navClose: (e) => {
+        const href = e.currentTarget.getAttribute("href") || "";
+        this.setState({ menuOpen: false });
+        if (href[0] === "#" && href.length > 1) {
+          e.preventDefault();
+          const id = href.slice(1);
+          setTimeout(() => {
+            document.body.style.overflow = "";
+            const el = document.getElementById(id);
+            if (el) { el.scrollIntoView({ behavior: "smooth", block: "start" }); history.replaceState(null, "", "#" + id); }
+          }, 180);
+        }
+      }
     };
   }
 }

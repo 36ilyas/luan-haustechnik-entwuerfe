@@ -69,7 +69,7 @@
   section.grid {
     padding: 24px 0 100px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 32px;
   }
 
@@ -173,9 +173,13 @@
   }
 
   @media (max-width: 640px) {
-    header.top { padding: 56px 0 32px; }
-    section.grid { gap: 24px; padding-bottom: 72px; }
+    .wrap { padding: 0 20px; }
+    header.top { padding: 48px 0 28px; }
+    h1 { font-size: clamp(28px, 8vw, 40px); }
+    .lead { font-size: 16px; }
+    section.grid { gap: 22px; padding-bottom: 64px; }
     .body { padding: 24px 22px 26px; }
+    footer.bottom { flex-direction: column; gap: 6px; }
   }
 </style>
 </head>
