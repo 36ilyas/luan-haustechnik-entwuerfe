@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Archivo:ital,wght@1,400&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #191714; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    a { color: #B4552D; }
+    a:hover { color: #C96538; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Archivo', Helvetica, sans-serif; background: #F4F1EC; color: #23201B; min-width: 320px;">
+
+  <!-- ===== NAV ===== -->
+  <header data-screen-label="Navigation" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: {{ headerBg }}; backdrop-filter: {{ headerBlur }}; border-bottom: 1px solid {{ headerBorder }}; transition: background 0.35s ease, border-color 0.35s ease;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px; height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+      <a href="#top" style="text-decoration: none; display: flex; align-items: baseline; gap: 10px; color: {{ logoColor }}; transition: color 0.35s ease;">
+        <span style="font-size: 26px; font-weight: 800; letter-spacing: 0.02em; font-stretch: 115%;">LUAN</span>
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7;">Haustechnik</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 28px;">
+        <a href="#leistungen" style="text-decoration: none; color: {{ navColor }}; font-size: 15px; font-weight: 500; transition: color 0.35s ease;" style-hover="opacity: 0.7;">Leistungen</a>
+        <a href="#einblicke" style="text-decoration: none; color: {{ navColor }}; font-size: 15px; font-weight: 500; transition: color 0.35s ease;" style-hover="opacity: 0.7;">Einblicke</a>
+        <a href="#unternehmen" style="text-decoration: none; color: {{ navColor }}; font-size: 15px; font-weight: 500; transition: color 0.35s ease;" style-hover="opacity: 0.7;">Unternehmen</a>
+        <a href="#kontakt" style="text-decoration: none; background: {{ ctaBg }}; border: 1px solid {{ ctaBorder }}; color: {{ ctaColor }}; font-size: 15px; font-weight: 600; padding: 10px 22px; border-radius: 999px; transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;" style-hover="background: #B4552D; border-color: #B4552D; color: #FFF;">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="top" data-screen-label="Hero" style="position: relative; min-height: 92vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: #191714;">
+    <div role="img" aria-label="Hausfassade" style="position: absolute; inset: 0; background-image: {{ heroBgImage }}; background-size: cover; background-position: center;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,17,13,0.94) 0%, rgba(20,17,13,0.5) 45%, rgba(20,17,13,0.3) 100%);"></div>
+
+    <div style="position: relative; max-width: 1240px; width: 100%; margin: 0 auto; padding: 150px 32px 0;">
+      <p style="margin: 0 0 18px; color: #E8B491; font-size: 14px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Innenausbau &amp; Renovierung · Nordrhein-Westfalen</p>
+      <h1 style="margin: 0; color: #FFFFFF; font-size: clamp(44px, 6.5vw, 84px); line-height: 1.03; font-weight: 750; letter-spacing: -0.025em; font-stretch: 105%; max-width: 16ch; text-wrap: balance;">Ihr Zuhause, sauber renoviert — von Handwerkern, die anpacken.</h1>
+      <p style="margin: 26px 0 0; color: rgba(255,255,255,0.85); font-size: 19px; line-height: 1.6; max-width: 56ch; text-wrap: pretty;">Luan ist ein kleines Familienteam für Innenausbau, Renovierung und Sanierung. Vom Trockenbau über den Boden bis zum fertigen Bad — alles aus einer Hand, termintreu und ohne Chaos auf der Baustelle.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px;">
+        <a href="#kontakt" style="text-decoration: none; background: #B4552D; color: #FFF; font-size: 16px; font-weight: 650; padding: 16px 30px; border-radius: 999px;" style-hover="background: #C96538;">Jetzt anfragen</a>
+        <a href="https://www.instagram.com/luanbau_nrw/" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); color: #FFF; font-size: 16px; font-weight: 600; padding: 16px 26px; border-radius: 999px;" style-hover="background: rgba(255,255,255,0.22);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.6" cy="6.4" r="1.1" fill="#fff" stroke="none"></circle></svg>
+          Auf Instagram ansehen
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero-Inhalt: Fakten-Leiste -->
+    <div style="position: relative; max-width: 1240px; width: 100%; margin: 56px auto 0; padding: 0 32px 40px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; overflow: hidden;">
+        <div style="background: rgba(20,17,13,0.55); backdrop-filter: blur(8px); padding: 22px 26px;">
+          <p style="margin: 0; color: #FFF; font-size: 26px; font-weight: 750; letter-spacing: -0.01em;">4-Mann-Team</p>
+          <p style="margin: 4px 0 0; color: rgba(255,255,255,0.65); font-size: 14px;">Persönlich, klein &amp; zuverlässig</p>
+        </div>
+        <div style="background: rgba(20,17,13,0.55); backdrop-filter: blur(8px); padding: 22px 26px;">
+          <p style="margin: 0; color: #FFF; font-size: 26px; font-weight: 750; letter-spacing: -0.01em;">Alles aus einer Hand</p>
+          <p style="margin: 4px 0 0; color: rgba(255,255,255,0.65); font-size: 14px;">Trockenbau, Renovierung &amp; Sanierung</p>
+        </div>
+        <div style="background: rgba(20,17,13,0.55); backdrop-filter: blur(8px); padding: 22px 26px;">
+          <p style="margin: 0; color: #FFF; font-size: 26px; font-weight: 750; letter-spacing: -0.01em;">Region NRW</p>
+          <p style="margin: 4px 0 0; color: rgba(255,255,255,0.65); font-size: 14px;">Für Privatkunden vor Ort</p>
+        </div>
+        <div style="background: rgba(20,17,13,0.55); backdrop-filter: blur(8px); padding: 22px 26px;">
+          <p style="margin: 0; color: #FFF; font-size: 26px; font-weight: 750; letter-spacing: -0.01em;">0178 442 64 80</p>
+          <p style="margin: 4px 0 0; color: rgba(255,255,255,0.65); font-size: 14px;">Direkt anrufen oder schreiben</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section id="unternehmen" data-screen-label="Unternehmen" style="max-width: 1240px; margin: 0 auto; padding: 110px 32px 90px; display: grid; grid-template-columns: minmax(240px, 5fr) minmax(300px, 7fr); gap: 64px; align-items: start;">
+    <h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.12; font-weight: 720; letter-spacing: -0.02em; text-wrap: balance;">Handwerk aus einer Hand — für Ihr Zuhause.</h2>
+    <div>
+      <p style="margin: 0; font-size: 18px; line-height: 1.7; color: #443F38; text-wrap: pretty;">Wir sind ein kleines, eingespieltes Team. Statt anonymer Großbaustelle bekommen Sie bei uns feste Ansprechpartner, die selbst mit anpacken — vom ersten Termin bis zur Übergabe.</p>
+      <p style="margin: 18px 0 0; font-size: 18px; line-height: 1.7; color: #443F38; text-wrap: pretty;">Saubere Arbeit, ehrliche Absprachen und ein Ergebnis, das hält: Darauf legen wir Wert. Genau deshalb kommen viele unserer Kundinnen und Kunden über Empfehlung zu uns.</p>
+    </div>
+  </section>
+
+  <!-- ===== LEISTUNGEN ===== -->
+  <section id="leistungen" data-screen-label="Leistungen" style="background: #23201B; color: #F4F1EC;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 100px 32px;">
+      <p style="margin: 0 0 14px; color: #D98D5F; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Unsere Leistungen</p>
+      <h2 style="margin: 0 0 56px; font-size: clamp(30px, 3.4vw, 44px); font-weight: 720; letter-spacing: -0.02em; max-width: 22ch; line-height: 1.12; text-wrap: balance;">Vom Rohbau-Detail bis zur fertigen Wohnung.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px;">
+        <div style="border-top: 1px solid rgba(244,241,236,0.25); padding-top: 28px;">
+          <p style="margin: 0 0 12px; font-size: 15px; color: #D98D5F; font-weight: 650;">01</p>
+          <h3 style="margin: 0 0 12px; font-size: 23px; font-weight: 700; letter-spacing: -0.01em;">Trockenbau &amp; Innenausbau</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: rgba(244,241,236,0.72); text-wrap: pretty;">Wände, Decken, Dämmung und Vorwandinstallationen — sauber gesetzt und passgenau verspachtelt.</p>
+        </div>
+        <div style="border-top: 1px solid rgba(244,241,236,0.25); padding-top: 28px;">
+          <p style="margin: 0 0 12px; font-size: 15px; color: #D98D5F; font-weight: 650;">02</p>
+          <h3 style="margin: 0 0 12px; font-size: 23px; font-weight: 700; letter-spacing: -0.01em;">Renovierung &amp; Sanierung</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: rgba(244,241,236,0.72); text-wrap: pretty;">Komplette Wohnungen und Häuser modernisieren — koordiniert, termintreu und aus einer Hand.</p>
+        </div>
+        <div style="border-top: 1px solid rgba(244,241,236,0.25); padding-top: 28px;">
+          <p style="margin: 0 0 12px; font-size: 15px; color: #D98D5F; font-weight: 650;">03</p>
+          <h3 style="margin: 0 0 12px; font-size: 23px; font-weight: 700; letter-spacing: -0.01em;">Böden &amp; Malerarbeiten</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: rgba(244,241,236,0.72); text-wrap: pretty;">Laminat, Vinyl und Parkett, dazu Spachteln, Streichen und Tapezieren für den perfekten Feinschliff.</p>
+        </div>
+        <div style="border-top: 1px solid rgba(244,241,236,0.25); padding-top: 28px;">
+          <p style="margin: 0 0 12px; font-size: 15px; color: #D98D5F; font-weight: 650;">04</p>
+          <h3 style="margin: 0 0 12px; font-size: 23px; font-weight: 700; letter-spacing: -0.01em;">Bad &amp; Haustechnik</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: rgba(244,241,236,0.72); text-wrap: pretty;">Badumbau, Fliesen und Sanitär — funktional geplant und schlüsselfertig umgesetzt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EINBLICKE (Galerie) ===== -->
+  <section id="einblicke" data-screen-label="Einblicke" style="max-width: 1240px; margin: 0 auto; padding: 110px 32px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 48px;">
+      <div>
+        <p style="margin: 0 0 14px; color: #B4552D; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Einblicke</p>
+        <h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 44px); font-weight: 720; letter-spacing: -0.02em; line-height: 1.12;">Aus der Werkstatt &amp; von der Baustelle.</h2>
+      </div>
+      <p style="margin: 0; max-width: 44ch; font-size: 16px; line-height: 1.6; color: #555047; text-wrap: pretty;">Ein paar Eindrücke unserer Arbeit — vom ersten Aufriss bis zum fertigen Raum. Eigene Projektfotos lassen sich hier jederzeit hinterlegen.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px;">
+      <div style="aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: #E4DED4;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="luan-1" shape="rect" src="https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=1200" placeholder="Projektfoto hier ablegen" hint-size="100%,100%"></x-import>
+      </div>
+      <div style="aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: #E4DED4;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="luan-2" shape="rect" src="https://images.pexels.com/photos/8092/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200" placeholder="Projektfoto hier ablegen" hint-size="100%,100%"></x-import>
+      </div>
+      <div style="aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: #E4DED4;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="luan-3" shape="rect" src="https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1200" placeholder="Projektfoto hier ablegen" hint-size="100%,100%"></x-import>
+      </div>
+      <div style="aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: #E4DED4;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="luan-4" shape="rect" src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1200" placeholder="Projektfoto hier ablegen" hint-size="100%,100%"></x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL ===== -->
+  <section id="social" data-screen-label="Social" style="background: #201D18;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 100px 32px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center;">
+        <div>
+          <p style="margin: 0 0 14px; color: #D98D5F; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Folgen Sie uns</p>
+          <h2 style="margin: 0 0 20px; font-size: clamp(30px, 3.6vw, 46px); font-weight: 730; letter-spacing: -0.02em; line-height: 1.1; color: #F4F1EC; text-wrap: balance;">Baustelle live — auf Instagram &amp; TikTok.</h2>
+          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: rgba(244,241,236,0.7); max-width: 46ch; text-wrap: pretty;">Fortschritte, Vorher-Nachher und ehrliche Einblicke in unseren Arbeitsalltag. Schauen Sie vorbei und schreiben Sie uns gern direkt per DM.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <a href="https://www.instagram.com/luanbau_nrw/" target="_blank" rel="noopener" style="text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 26px; border-radius: 20px; min-height: 190px; color: #FFF; background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 55%, #962fbf 80%, #4f5bd5 100%); transition: transform 0.3s ease;" style-hover="transform: translateY(-4px);">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.2" fill="#fff" stroke="none"></circle></svg>
+            <div>
+              <p style="margin: 0; font-size: 18px; font-weight: 750; letter-spacing: -0.01em;">Instagram</p>
+              <p style="margin: 4px 0 0; font-size: 14px; opacity: 0.9;">@luanbau_nrw</p>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@edmond.haxhiu0" target="_blank" rel="noopener" style="text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 26px; border-radius: 20px; min-height: 190px; color: #FFF; background: #050505; border: 1px solid rgba(255,255,255,0.14); transition: transform 0.3s ease;" style-hover="transform: translateY(-4px);">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="#fff"><path d="M16.6 3h-3.1v13.1c0 1.8-1.4 3.2-3.2 3.2s-3.2-1.4-3.2-3.2 1.4-3.2 3.2-3.2c.3 0 .6 0 .9.1V9.9c-.3 0-.6-.1-.9-.1C6.9 9.8 4 12.7 4 16.1S6.9 22.4 10.3 22.4s6.3-2.8 6.3-6.3V9.7c1 .8 2.3 1.2 3.6 1.2V7.8c-1.9-.3-3.3-2-3.6-4z"></path></svg>
+            <div>
+              <p style="margin: 0; font-size: 18px; font-weight: 750; letter-spacing: -0.01em;">TikTok</p>
+              <p style="margin: 4px 0 0; font-size: 14px; opacity: 0.75;">@edmond.haxhiu0</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA / KONTAKT ===== -->
+  <section id="kontakt" data-screen-label="Kontakt" style="background: #23201B; color: #F4F1EC;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 100px 32px 80px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: start;">
+        <div>
+          <h2 style="margin: 0 0 20px; font-size: clamp(32px, 4vw, 54px); font-weight: 750; letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance;">Lassen Sie uns über Ihr Projekt sprechen.</h2>
+          <p style="margin: 0 0 32px; font-size: 17px; line-height: 1.65; color: rgba(244,241,236,0.72); max-width: 46ch; text-wrap: pretty;">Ob Renovierung, Trockenbau oder ein neues Bad — beschreiben Sie uns kurz Ihr Vorhaben. Wir melden uns schnell und beraten unverbindlich.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px;">
+            <a href="tel:+491784426480" style="text-decoration: none; background: #B4552D; color: #FFF; font-size: 16px; font-weight: 650; padding: 16px 30px; border-radius: 999px;" style-hover="background: #C96538;">0178 442 64 80</a>
+            <a href="https://www.instagram.com/luanbau_nrw/" target="_blank" rel="noopener" style="text-decoration: none; border: 1px solid rgba(244,241,236,0.35); color: #F4F1EC; font-size: 16px; font-weight: 600; padding: 16px 30px; border-radius: 999px;" style-hover="background: rgba(244,241,236,0.1);">Nachricht auf Instagram</a>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 24px; border-left: 1px solid rgba(244,241,236,0.2); padding-left: 40px;">
+          <div>
+            <p style="margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #D98D5F;">Ansprechpartner</p>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6;">Edmond Haxhiu<br>Luan Haustechnik</p>
+          </div>
+          <div>
+            <p style="margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #D98D5F;">Telefon</p>
+            <p style="margin: 0; font-size: 17px;">0178 442 64 80</p>
+          </div>
+          <div>
+            <p style="margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #D98D5F;">Social</p>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7;"><a href="https://www.instagram.com/luanbau_nrw/" target="_blank" rel="noopener" style="color: #F4F1EC;">Instagram @luanbau_nrw</a><br><a href="https://www.tiktok.com/@edmond.haxhiu0" target="_blank" rel="noopener" style="color: #F4F1EC;">TikTok @edmond.haxhiu0</a></p>
+          </div>
+          <div>
+            <p style="margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #D98D5F;">Region</p>
+            <p style="margin: 0; font-size: 17px;">Nordrhein-Westfalen &amp; Umgebung</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid rgba(244,241,236,0.15);">
+      <div style="max-width: 1240px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px; color: rgba(244,241,236,0.55);">
+        <span>© 2026 Luan Haustechnik · Edmond Haxhiu</span>
+        <div style="display: flex; gap: 24px;">
+          <a href="#" style="color: rgba(244,241,236,0.55); text-decoration: none;" style-hover="color: #F4F1EC;">Impressum</a>
+          <a href="#" style="color: rgba(244,241,236,0.55); text-decoration: none;" style-hover="color: #F4F1EC;">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroImage&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&amp;fit=crop&amp;w=2400&amp;q=80&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false };
+
+  componentDidMount() {
+    const update = (scrolled) => {
+      if (scrolled !== this.state.scrolled) this.setState({ scrolled });
+    };
+    this._onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      update(y > window.innerHeight * 0.6);
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    document.addEventListener("scroll", this._onScroll, { passive: true, capture: true });
+    this._onScroll();
+
+    const attach = () => {
+      const hero = document.getElementById("top");
+      if (!hero) { setTimeout(attach, 200); return; }
+      this._io = new IntersectionObserver((entries) => {
+        const e = entries[0];
+        update(e.intersectionRatio < 0.35 && e.boundingClientRect.top < 0);
+      }, { threshold: [0, 0.1, 0.2, 0.3, 0.35, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] });
+      this._io.observe(hero);
+    };
+    attach();
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    window.removeEventListener("scroll", this._onScroll);
+    document.removeEventListener("scroll", this._onScroll, { capture: true });
+  }
+
+  renderVals() {
+    const s = this.state.scrolled;
+    const heroImage = this.props.heroImage ?? "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=2400&q=80";
+    return {
+      heroImage,
+      heroBgImage: 'url("' + heroImage + '")',
+      headerBg: s ? "rgba(244,241,236,0.92)" : "transparent",
+      headerBlur: s ? "blur(12px)" : "none",
+      headerBorder: s ? "rgba(35,32,27,0.1)" : "transparent",
+      logoColor: s ? "#23201B" : "#FFFFFF",
+      navColor: s ? "#555047" : "rgba(255,255,255,0.9)",
+      ctaBg: s ? "#23201B" : "rgba(255,255,255,0.12)",
+      ctaBorder: s ? "#23201B" : "rgba(255,255,255,0.4)",
+      ctaColor: s ? "#F4F1EC" : "#FFFFFF"
+    };
+  }
+}
+</script>
+</body>
+</html>

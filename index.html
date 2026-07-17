@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luan Haustechnik — Design-Entwürfe</title>
+<meta name="description" content="Drei Design-Entwürfe für die Website von Luan Haustechnik zur Auswahl.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f3ee;
+    --surface: #ffffff;
+    --ink: #16150f;
+    --ink-2: #5a564c;
+    --line: #e6e1d6;
+    --accent: #b4552d;
+    --accent-hover: #963f1c;
+    --shadow: 0 1px 2px rgba(20,17,13,.04), 0 12px 30px rgba(20,17,13,.06);
+    --shadow-hover: 0 6px 12px rgba(20,17,13,.06), 0 30px 60px rgba(20,17,13,.14);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+  header.top {
+    padding: 80px 0 48px;
+  }
+  .brand {
+    display: inline-flex; align-items: baseline; gap: 10px;
+    margin-bottom: 40px;
+  }
+  .brand-mark {
+    font-size: 22px; font-weight: 800; letter-spacing: .02em; color: var(--ink);
+  }
+  .brand-sub {
+    font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  h1 {
+    margin: 0 0 18px;
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 750;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+  .lead {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+
+  section.grid {
+    padding: 24px 0 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(20,17,13,.14);
+  }
+  .card .thumb {
+    aspect-ratio: 640 / 353;
+    background: #e6e1d6;
+    position: relative;
+    overflow: hidden;
+  }
+  .card .thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease;
+  }
+  .card:hover .thumb img { transform: scale(1.03); }
+
+  .badge {
+    position: absolute; top: 14px; left: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(8px);
+    color: var(--ink);
+    font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    border-radius: 999px;
+  }
+  .badge .dot {
+    width: 8px; height: 8px; border-radius: 999px; background: var(--accent);
+  }
+
+  .body {
+    padding: 28px 28px 30px;
+    display: flex; flex-direction: column; flex: 1;
+  }
+  .kicker {
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  }
+  .card h2 {
+    margin: 0 0 12px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .card p {
+    margin: 0 0 24px;
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+  .palette {
+    display: flex; gap: 8px; margin: 0 0 22px;
+  }
+  .swatch {
+    width: 22px; height: 22px; border-radius: 999px;
+    border: 1px solid rgba(20,17,13,.08);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.4);
+  }
+  .cta {
+    margin-top: auto;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 20px;
+    align-self: flex-start;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 999px;
+    font-size: 14px; font-weight: 600; letter-spacing: .01em;
+    transition: background .25s ease, transform .25s ease;
+  }
+  .card:hover .cta { background: var(--accent); }
+  .cta svg { transition: transform .25s ease; }
+  .card:hover .cta svg { transform: translateX(3px); }
+
+  footer.bottom {
+    border-top: 1px solid var(--line);
+    padding: 28px 0 40px;
+    font-size: 13px;
+    color: var(--ink-2);
+    display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
+  }
+
+  @media (max-width: 640px) {
+    header.top { padding: 56px 0 32px; }
+    section.grid { gap: 24px; padding-bottom: 72px; }
+    .body { padding: 24px 22px 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <span class="brand-mark">LUAN</span>
+      <span class="brand-sub">Haustechnik</span>
+    </div>
+    <h1>Drei Design-Entwürfe für Ihre Website.</h1>
+    <p class="lead">Wählen Sie einen Entwurf, um die vollständige Seite anzusehen. Alle drei zeigen die gleichen Inhalte in unterschiedlicher Bildsprache — ideal, um den Stil zu vergleichen, der am besten zu Luan Haustechnik passt.</p>
+  </header>
+
+  <section class="grid">
+
+    <a class="card" href="designs/entwurf-1a/index.html">
+      <div class="thumb">
+        <span class="badge"><span class="dot" style="background:#b4552d;"></span>Entwurf 1 · Warm</span>
+        <img src="previews/entwurf-1a.webp" alt="Vorschau Entwurf 1 – warme Farbwelt">
+      </div>
+      <div class="body">
+        <p class="kicker">Innenausbau &amp; Renovierung</p>
+        <h2>Warm &amp; handwerklich</h2>
+        <div class="palette" aria-hidden="true">
+          <span class="swatch" style="background:#191714;" title="Anthrazit"></span>
+          <span class="swatch" style="background:#f4f1ec;" title="Sandbeige"></span>
+          <span class="swatch" style="background:#b4552d;" title="Kupfer"></span>
+          <span class="swatch" style="background:#d98d5f;" title="Terracotta"></span>
+        </div>
+        <p>Erdige Farbwelt mit Kupfer-Akzent. Bildgetriebener Hero-Bereich, ruhige Sektionen, Fokus auf Handwerk und Vertrauen.</p>
+        <span class="cta">Ansehen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <a class="card" href="designs/entwurf-1b/index.html">
+      <div class="thumb">
+        <span class="badge"><span class="dot" style="background:#ce1b2c;"></span>Entwurf 1 · Blau/Rot</span>
+        <img src="previews/entwurf-1b.webp" alt="Vorschau Entwurf 1 – blau-rote Farbwelt">
+      </div>
+      <div class="body">
+        <p class="kicker">Innenausbau &amp; Renovierung</p>
+        <h2>Kühl &amp; markant</h2>
+        <div class="palette" aria-hidden="true">
+          <span class="swatch" style="background:#0a1626;" title="Nachtblau"></span>
+          <span class="swatch" style="background:#f5f8fc;" title="Papierweiß"></span>
+          <span class="swatch" style="background:#ce1b2c;" title="Signalrot"></span>
+          <span class="swatch" style="background:#ee8a92;" title="Rosé"></span>
+        </div>
+        <p>Gleiches Layout wie Entwurf 1 · Warm — aber in kühler Blau-Palette mit rotem Signal-Akzent. Wirkt technischer und selbstbewusster.</p>
+        <span class="cta">Ansehen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <a class="card" href="designs/entwurf-2/index.html">
+      <div class="thumb">
+        <span class="badge"><span class="dot" style="background:#d3252b;"></span>Entwurf 2 · Editorial</span>
+        <img src="previews/entwurf-2.webp" alt="Vorschau Entwurf 2 – Editorial-Stil">
+      </div>
+      <div class="body">
+        <p class="kicker">Heizung · Sanitär · Bad</p>
+        <h2>Editorial &amp; direkt</h2>
+        <div class="palette" aria-hidden="true">
+          <span class="swatch" style="background:#f3f0e9;" title="Cremeweiß"></span>
+          <span class="swatch" style="background:#14243f;" title="Tiefblau"></span>
+          <span class="swatch" style="background:#d3252b;" title="Rot"></span>
+          <span class="swatch" style="background:#16181d;" title="Schwarz"></span>
+        </div>
+        <p>Kompletter zweiter Ansatz: redaktioneller Look mit Serif-Anmutung, klare Kanten, kräftige Typografie. Ausgerichtet auf Heizung, Sanitär &amp; Bad.</p>
+        <span class="cta">Ansehen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </section>
+
+  <footer class="bottom">
+    <span>© 2026 Luan Haustechnik · Edmond Haxhiu</span>
+    <span>Design-Vorschau · nicht öffentlich beworben</span>
+  </footer>
+
+</div>
+</body>
+</html>
