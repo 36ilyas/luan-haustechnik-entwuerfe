@@ -62,7 +62,11 @@
   .dc2-ph span{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;}
 
   /* ===== Responsive Layout (ersetzt das frühere JS-Resize) ===== */
-  @media (min-width:860px){ .dc2-drawer,.dc2-backdrop{display:none!important;} }
+  @media (min-width:860px){
+    .dc2-drawer,.dc2-backdrop{display:none!important;}
+    /* Hero füllt auf Desktop die Bildschirmhöhe (abzüglich Topbar + Header) */
+    [data-hero-grid]{min-height:calc(100vh - 102px);}
+  }
   @media (max-width:859px){
     [data-nav-desktop]{display:none!important;}
     .dc2-anfragen{display:none!important;}
