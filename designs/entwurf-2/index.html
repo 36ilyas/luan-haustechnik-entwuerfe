@@ -56,6 +56,11 @@
   .dc2-drawer-mail{border:1px solid rgba(243,240,233,.3);color:#f3f0e9;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;padding:14px;}
   .dc2-drawer-mail:hover{opacity:1;color:#f3f0e9;}
 
+  /* Bild-Platzhalter (für eigene Projektfotos) */
+  .dc2-ph{width:100%;height:100%;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#e5e0d4;color:#a89e8c;text-align:center;box-shadow:inset 0 0 0 1px rgba(20,20,20,.05);}
+  .dc2-ph svg{opacity:.65;}
+  .dc2-ph span{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;}
+
   /* ===== Responsive Layout (ersetzt das frühere JS-Resize) ===== */
   @media (min-width:860px){ .dc2-drawer,.dc2-backdrop{display:none!important;} }
   @media (max-width:859px){
@@ -76,8 +81,14 @@
     [data-svc-row] p,[data-step-row] p{grid-column:1 / -1!important;}
     .dc2-sec{padding-top:60px!important;padding-bottom:60px!important;}
     .dc2-hero-h1{font-size:clamp(38px,10vw,54px)!important;}
-    .dc2-hero-img{min-height:300px!important;}
+    .dc2-hero-img{min-height:250px!important;}
+    .dc2-hero-imgcol{margin-top:6px!important;margin-bottom:24px!important;}
     .dc2-ablauf{padding:56px 22px!important;}
+    .dc2-trust{flex-direction:column!important;gap:0!important;margin-top:28px!important;border-top:1px solid #d9d3c5;}
+    .dc2-trust span{padding:12px 2px!important;border-bottom:1px solid #e4dfd2;color:#3a352d!important;font-size:12.5px!important;}
+    .dc2-marquee{white-space:normal!important;}
+    .dc2-marquee-inner{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:13px 18px!important;}
+    .dc2-marquee-sep{display:none!important;}
   }
   @media (max-width:559px){
     [data-phone-label]{display:none!important;}
@@ -87,6 +98,7 @@
     [data-svc-row]{grid-template-columns:54px 1fr!important;}
     [data-step-row]{grid-template-columns:64px 1fr!important;}
     .dc2-pad{padding-left:18px!important;padding-right:18px!important;}
+    .dc2-marquee-inner{grid-template-columns:1fr!important;gap:11px 0!important;}
     .dc2-hero-h1{font-size:clamp(32px,9vw,46px)!important;}
     .dc2-sec-h2{font-size:clamp(30px,8.5vw,40px)!important;}
     .dc2-phone-big{font-size:clamp(30px,9vw,40px)!important;}
@@ -162,13 +174,13 @@
           <a href="tel:+491784426488" class="mono" style="background:var(--accent,#d3252b);color:#fff;padding:16px 26px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;">Jetzt anrufen →</a>
           <a href="#kontakt" class="mono" style="color:#16181d;padding:16px 8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;border-bottom:2px solid #16181d;">Angebot anfragen</a>
         </div>
-        <div class="mono" style="display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:36px;font-size:12px;letter-spacing:.06em;color:#6b6459;text-transform:uppercase;">
+        <div class="mono dc2-trust" style="display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:36px;font-size:12px;letter-spacing:.06em;color:#6b6459;text-transform:uppercase;">
           <span>◦ Schnelle Termine</span><span>◦ Faire Festpreise</span><span>◦ Alles aus einer Hand</span>
         </div>
       </div>
-      <div style="position:relative;padding:0;">
+      <div class="dc2-hero-imgcol" style="position:relative;padding:0;">
         <div class="dc2-hero-img" style="height:100%;min-height:440px;overflow:hidden;background:#dcd7cc;">
-          <img src="https://loremflickr.com/1000/1200/boiler?lock=31" alt="Heizungs- und Haustechnik-Installation" style="width:100%;height:100%;object-fit:cover;filter:saturate(.92);" loading="lazy">
+          <div class="dc2-ph"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg><span>Projektfoto</span></div>
         </div>
         <div class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:14px 18px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;">Abb. — Heizungsinstallation / Raum NRW</div>
         <div class="mono" style="position:absolute;right:0;top:0;background:var(--accent,#d3252b);color:#fff;padding:16px 18px;text-align:right;line-height:1;">
@@ -179,9 +191,9 @@
   </section>
 
   <!-- MARQUEE BAND -->
-  <div class="mono" style="background:#16181d;color:#f3f0e9;font-size:13px;letter-spacing:.14em;text-transform:uppercase;overflow:hidden;white-space:nowrap;">
-    <div style="max-width:1240px;margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;gap:10px 28px;">
-      <span>Heizungsbau</span><span style="color:var(--accent,#d3252b);">/</span><span>Sanitärinstallation</span><span style="color:var(--accent,#d3252b);">/</span><span>Badsanierung</span><span style="color:var(--accent,#d3252b);">/</span><span>Klima &amp; Lüftung</span><span style="color:var(--accent,#d3252b);">/</span><span>Wartung</span><span style="color:var(--accent,#d3252b);">/</span><span>Innenausbau</span>
+  <div class="mono dc2-marquee" style="background:#16181d;color:#f3f0e9;font-size:13px;letter-spacing:.14em;text-transform:uppercase;overflow:hidden;white-space:nowrap;">
+    <div class="dc2-marquee-inner dc2-pad" style="max-width:1240px;margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;gap:10px 28px;">
+      <span>Heizungsbau</span><span class="dc2-marquee-sep" style="color:var(--accent,#d3252b);">/</span><span>Sanitärinstallation</span><span class="dc2-marquee-sep" style="color:var(--accent,#d3252b);">/</span><span>Badsanierung</span><span class="dc2-marquee-sep" style="color:var(--accent,#d3252b);">/</span><span>Klima &amp; Lüftung</span><span class="dc2-marquee-sep" style="color:var(--accent,#d3252b);">/</span><span>Wartung</span><span class="dc2-marquee-sep" style="color:var(--accent,#d3252b);">/</span><span>Innenausbau</span>
     </div>
   </div>
 
@@ -246,26 +258,26 @@
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;" data-proj-top>
         <figure style="margin:0;position:relative;overflow:hidden;background:#dcd7cc;aspect-ratio:16/10;">
-          <img src="{{ gallery.0.src }}" alt="{{ gallery.0.label }}" style="width:100%;height:100%;object-fit:cover;filter:saturate(.92);" loading="lazy">
-          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 01 — {{ gallery.0.label }}</figcaption>
+          <div class="dc2-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg><span>Projektfoto</span></div>
+          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 01 — Platzhalter</figcaption>
         </figure>
         <figure style="margin:0;position:relative;overflow:hidden;background:#dcd7cc;">
-          <img src="{{ gallery.1.src }}" alt="{{ gallery.1.label }}" style="width:100%;height:100%;object-fit:cover;filter:saturate(.92);" loading="lazy">
-          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 02 — {{ gallery.1.label }}</figcaption>
+          <div class="dc2-ph"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg><span>Projektfoto</span></div>
+          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 02 — Platzhalter</figcaption>
         </figure>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;" data-proj-bot>
         <figure style="margin:0;position:relative;overflow:hidden;background:#dcd7cc;aspect-ratio:4/3;">
-          <img src="{{ gallery.2.src }}" alt="{{ gallery.2.label }}" style="width:100%;height:100%;object-fit:cover;filter:saturate(.92);" loading="lazy">
-          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 03 — {{ gallery.2.label }}</figcaption>
+          <div class="dc2-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg><span>Projektfoto</span></div>
+          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 03 — Platzhalter</figcaption>
         </figure>
         <figure style="margin:0;position:relative;overflow:hidden;background:#dcd7cc;aspect-ratio:4/3;">
-          <img src="{{ gallery.3.src }}" alt="{{ gallery.3.label }}" style="width:100%;height:100%;object-fit:cover;filter:saturate(.92);" loading="lazy">
-          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 04 — {{ gallery.3.label }}</figcaption>
+          <div class="dc2-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg><span>Projektfoto</span></div>
+          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 04 — Platzhalter</figcaption>
         </figure>
         <figure style="margin:0;position:relative;overflow:hidden;background:#dcd7cc;aspect-ratio:4/3;">
-          <img src="{{ gallery.4.src }}" alt="{{ gallery.4.label }}" style="width:100%;height:100%;object-fit:cover;filter:saturate(.92);" loading="lazy">
-          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 05 — {{ gallery.4.label }}</figcaption>
+          <div class="dc2-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg><span>Projektfoto</span></div>
+          <figcaption class="mono" style="position:absolute;left:0;bottom:0;background:#14243f;color:#f3f0e9;padding:11px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">Abb. 05 — Platzhalter</figcaption>
         </figure>
       </div>
     </div>
